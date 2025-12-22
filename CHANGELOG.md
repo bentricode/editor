@@ -1,3 +1,10 @@
+# 1.0.0 (2025-12-22)
+
+
+### Features
+
+* primeira versão do editor (podem existir bugs nessa primeira versão) ([86a77c0](https://github.com/bentricode/editor/commit/86a77c0ebb90dd83b1ec0ac4eb16133d4d42dd48))
+
 # [1.15.0](https://github.com/marlon-bento/v-sistec-features/compare/v1.14.0...v1.15.0) (2025-12-11)
 
 

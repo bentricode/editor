@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/bentricode/editor/compare/v1.0.0...v1.1.0) (2025-12-22)
+
+
+### Features
+
+* primeira versão do editor (podem existir bugs nessa primeira versão) ([2015c8a](https://github.com/bentricode/editor/commit/2015c8a2bd5c56b33bdab83c95da7bd72185acc2))
+
 # 1.0.0 (2025-12-22)
 
 

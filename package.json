@@ -2,6 +2,9 @@
   "name": "@bentricode/editor",
   "version": "1.0.0",
   "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
   "description": "Um editor de texto estilo Notion baseado em blocos para Vue 3.",
   "author": "Márlon Bento Azevedo (https://github.com/marlon-bento)",
   "repository": {

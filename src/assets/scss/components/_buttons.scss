@@ -1,0 +1,73 @@
+@use "@/assets/scss/abstracts/variables" as *;
+
+/* === HEADER (CONTROL GROUP) === */
+.control-group {
+  /* 1. Estrutura e Posicionamento (Essencial para funcionar) */
+  position: sticky;
+  top: 0;
+  z-index: $z-index-header;
+  width: 100%;
+  box-sizing: border-box;
+  
+  /* 2. Estilo Visual (Baseado em cores das Variáveis Tabler) */
+  background-color: var(--bg-primary);
+  border-bottom: 1px solid var(--border-light);
+  
+  padding: 0.5rem 1.5rem;
+  margin-bottom: 1rem;
+  
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+
+  display: flex;
+  justify-content: center; /* Centraliza os botões */
+
+  .button-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem; 
+  }
+
+  /* === BOTÕES DA TOOLBAR === */
+  /* Aplicado em todos os buttons dentro do grupo */
+  button,
+  .toolbar-btn {
+    background: transparent;
+    border: 1px solid transparent; 
+    border-radius: $radius-sm;
+    padding: 0.25rem 0.5rem;
+    cursor: pointer;
+    
+    color: var(--text-secondary);
+    
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    /* Ícones */
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    /* Hover */
+    &:hover {
+      background-color: var(--bg-hover);
+      color: var(--text-primary);
+    }
+
+    /* Estado Ativo (Negrito, Itálico, etc) */
+    &.is-active {
+      background-color: var(--color-brand-light);
+      color: var(--color-brand);
+    }
+
+    /* Desabilitado */
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+  }
+}

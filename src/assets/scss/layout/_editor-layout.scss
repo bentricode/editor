@@ -1,0 +1,175 @@
+@use "@/assets/scss/abstracts/variables" as *;
+
+/* ==========================================================================
+   1. CONTAINER PRINCIPAL DO EDITOR (O CARD)
+   ========================================================================== */
+.v-bentri-editor {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  
+  border: 1px solid var(--border-light);
+  border-radius: $radius-md;
+  
+  display: flex;
+  flex-direction: column;
+  
+  align-items: stretch; 
+  
+  position: relative;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+  border: 1px solid var(--border-editor);
+}
+
+/* ==========================================================================
+   2. LAYOUT DO HEADER (CONTROL GROUP)
+   ========================================================================== */
+.control-group {
+    background-color: var(--bg-primary);
+    
+    border-bottom: 1px solid var(--border-light);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    
+    display: flex;
+    justify-content: center; 
+    
+    width: 100%; 
+    box-sizing: border-box;
+    
+    /* Sticky: Gruda no topo ao rolar */
+    position: sticky;
+    top: 0;
+    z-index: $z-index-header;
+
+    border-top-left-radius: $radius-md;
+    border-top-right-radius: $radius-md;
+
+    .button-group {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        justify-content: center;
+    }
+}
+
+/* ==========================================================================
+   3. LAYOUT DO CONTEÚDO (TEXTO + SIDEBAR)
+   ========================================================================== */
+.editor-layout {
+  position: relative;
+  
+  width: 80%; 
+  max-width: 900px; 
+  margin: 0 auto;   
+  
+  /* Mobile: Ocupa quase tudo para aproveitar espaço */
+  @media (max-width: 768px) {
+    width: 95%;
+  }
+}
+
+/* Área específica do Tiptap */
+.v-bentri-editor-tiptap {
+  min-height: 300px;
+  /* Espaço extra no final para scroll confortável */
+  padding-bottom: 80px; 
+
+  &:focus-visible {
+    outline: none;
+  }
+}
+
+/* ==========================================================================
+   4. MODO TELA CHEIA (FULLSCREEN)
+   ========================================================================== */
+.v-bentri-editor-full-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: $z-index-editor;
+  
+  /* Configuração de Scroll na janela inteira */
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-bottom: 40px;
+
+  /* Remove estilos de "Card" */
+  border-radius: 0 !important;
+  border: none !important;
+
+  &.v-bentri-editor {
+    border-radius: 0;
+    border: none;
+  }
+
+  /* Header cola no topo sem arredondamento */
+  .control-group {
+    border-radius: 0;
+    border-bottom: 1px solid var(--border-light);
+    box-shadow: var(--shadow-sm); 
+  }
+
+  /* Garante que o texto mantenha os 80% mesmo em tela cheia */
+  /* Adiciona margem no topo para não colar no header */
+  .editor-layout {
+    width: 80%;
+    margin-top: 1.5rem;
+  }
+
+  .v-bentri-editor-tiptap {
+    min-height: 100vh;
+    height: auto;
+    caret-color: var(--color-brand);
+  }
+}
+
+/* ==========================================================================
+   5. ELEMENTOS VISUAIS E HELPERS
+   ========================================================================== */
+
+.drop-indicator {
+  position: absolute;
+  height: 4px;
+  background-color: var(--color-brand);
+  border-radius: 4px;
+  pointer-events: none;
+  transition: top 0.1s ease, left 0.1s ease, width 0.1s ease;
+  z-index: 40;
+  width: 100%;
+  opacity: 1;
+  
+  @supports (color: color-mix(in srgb, white, black)) {
+    box-shadow: 0 0 8px color-mix(in srgb, var(--color-brand-light), transparent 60%);
+  }
+}
+
+/* Estilo de Imagens dentro do editor */
+.tiptap {
+  img {
+    display: block;
+    height: auto;
+    max-width: 100%;
+    border-radius: $radius-md;
+    
+    /* Feedback visual quando selecionada */
+    &.ProseMirror-selectednode {
+      outline: 2px solid var(--color-brand);
+      box-shadow: 0 0 0 4px var(--color-brand-light);
+    }
+  }
+}
+
+/* para travar o scroll do body quando em fullscreen */
+html.v-bentri-editor-full-screen-active,
+body.v-bentri-editor-full-screen-active {
+    overflow: hidden !important;
+    height: 100% !important;
+    width: 100% !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+}

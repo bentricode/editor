@@ -1,0 +1,64 @@
+@use "@/assets/scss/abstracts/variables" as *;
+
+.container-tip-float {
+    z-index: $z-index-floating; 
+
+    .bubble-menu {
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+        
+        /* === CORES DO TEMA === */
+        background-color: var(--bg-modal); /* Branco (Light) / Escuro (Dark) */
+        border: 1px solid var(--border-light);
+        
+        /* Sombra do sistema (mais forte no dark mode) */
+        box-shadow: var(--shadow-float);
+        
+        border-radius: $radius-md; 
+        padding: 0.25rem;
+
+        /* Botões do Menu */
+        button {
+            background: transparent;
+            border: none;
+            padding: 0.25rem 0.5rem;
+            border-radius: $radius-sm;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+
+            /* Estado Padrão: Cinza discreto */
+            color: var(--text-secondary);
+
+            &:hover {
+                background-color: var(--bg-hover);
+                color: var(--text-primary);
+            }
+
+            /* Estado Ativo (Negrito, Itálico ativado) */
+            &.is-active {
+                /* Lilás sólido no light, Roxo transparente no dark */
+                background-color: var(--color-brand-light);
+                color: var(--color-brand);
+            }
+
+            svg {
+                display: block;
+                width: 18px; /* Tamanho padrão de ícones pequenos */
+                height: 18px;
+                stroke-width: 1.5;
+            }
+        }
+
+        /* Divisória Vertical */
+        .divider {
+            width: 1px;
+            height: 1.25rem; 
+            background-color: var(--border-light);
+            margin: 0 0.25rem;
+        }
+    }
+}

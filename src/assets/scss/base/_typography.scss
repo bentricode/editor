@@ -1,0 +1,163 @@
+@use "@/assets/scss/abstracts/variables" as *;
+
+/* === MIXINS === */
+@mixin heading-style($level, $font-size) {
+  h#{$level} {
+    font-size: $font-size;
+    font-weight: 700;
+    margin-top: 1.5em; 
+    margin-bottom: 0.75em;
+    line-height: 1.3;
+    color: var(--text-primary);
+    letter-spacing: -0.01em;
+  }
+}
+
+/* === TIPTAP TYPOGRAPHY === */
+.tiptap {
+  color: var(--text-primary);
+  font-family: $font-family-base;
+
+  &:focus {
+    outline: none;
+  }
+
+  /* Parágrafos */
+  p {
+    margin: 1em 0;
+    line-height: 1.7; 
+    color: var(--text-primary);
+  }
+
+  :first-child {
+    margin-top: 0;
+  }
+
+  /* --- HEADINGS --- */
+  @include heading-style(1, 2em);
+  @include heading-style(2, 1.5em);
+  @include heading-style(3, 1.25em);
+  @include heading-style(4, 1.1em);
+  @include heading-style(5, 1em);
+  @include heading-style(6, 0.9em);
+
+  /* --- LISTAS --- */
+  ul,
+  ol {
+    padding: 0 1.5rem;
+    margin: 1rem 0;
+    color: var(--text-primary);
+
+    li {
+      margin-bottom: 0.5em;
+      
+      p {
+        margin: 0; 
+      }
+    }
+  }
+
+  ul {
+    list-style-type: disc;
+  }
+
+  ol {
+    list-style-type: decimal;
+  }
+
+  /* --- INLINE CODE --- */
+  code {
+    background-color: var(--color-brand-light);
+    color: var(--color-brand);
+    
+    border-radius: $radius-sm;
+    font-family: $font-family-code;
+    font-size: 0.875em;
+    padding: 0.2em 0.4em;
+    font-weight: 600; 
+  }
+
+  /* --- CODE BLOCKS (Blocos grandes) --- */
+  pre {
+    /* Fundo sempre escuro (até o momento a cor dele não muda) */
+    background: var(--bg-code);
+    
+    color: var(--gray-50); 
+    
+    font-family: $font-family-code;
+    padding: 1.25rem;
+    border-radius: $radius-md;
+    margin: 1.5rem 0;
+    overflow-x: auto;
+    border: 1px solid var(--border-light);
+
+    code {
+      background: none;
+      color: inherit;
+      padding: 0;
+      font-size: 0.9em;
+      font-weight: 400;
+    }
+  }
+
+  /* --- QUOTES --- */
+  blockquote {
+    border-left: 4px solid var(--border-focus); 
+    margin: 1.5rem 0;
+    padding-left: 1.25rem;
+    font-style: italic;
+    color: var(--text-secondary);
+    background-color: var(--bg-secondary); 
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    border-top-right-radius: $radius-sm;
+    border-bottom-right-radius: $radius-sm;
+  }
+
+  /* --- DIVIDERS --- */
+  hr {
+    border: none;
+    border-top: 1px solid var(--border-light);
+    margin: 2.5rem 0; /* Mais espaço para separar seções */
+    opacity: 0.6;
+  }
+
+  /* --- PLACEHOLDER --- */
+  p.is-empty::before {
+    color: var(--text-placeholder);
+    content: attr(data-placeholder);
+    float: left;
+    height: 0;
+    pointer-events: none;
+  }
+
+  /* --- MARKS --- */
+  strong {
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+  
+  em {
+    font-style: italic;
+    color: var(--text-primary);
+  }
+  
+  s {
+    text-decoration: line-through;
+    color: var(--text-placeholder); /* Strike deve parecer "desabilitado" */
+  }
+  
+  /* Imagens */
+  img {
+    border-radius: $radius-md;
+    max-width: 100%;
+    height: auto;
+    
+    /* Sombra sutil nas imagens para destacar do fundo */
+    box-shadow: var(--shadow-sm); 
+    
+    &.ProseMirror-selectednode {
+      outline: 2px solid var(--border-focus);
+    }
+  }
+}

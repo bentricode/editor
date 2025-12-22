@@ -1,0 +1,141 @@
+@use "@/assets/scss/abstracts/variables" as *;
+
+.bentri-code-block {
+  position: relative;
+  margin: 1.5rem 0;
+  border-radius: $radius-md;
+  overflow: hidden; 
+  
+  border: 1px solid var(--border-light);
+
+  /* === Área do Código (Pre & Code) === */
+  pre {
+    /* IMPORTANTE: Fundo escuro fixo para suportar cores pastéis */
+    background-color: #1e1e1e !important; 
+    
+    /* Texto base (pontuação, parênteses) em cinza claro */
+    color: #e0e0e0; 
+    
+    font-family: $font-family-code;
+    font-size: 0.9rem;
+    
+    padding:  1.25rem; 
+    
+    margin: 0;
+    overflow-x: auto;
+    line-height: 1.6;
+    tab-size: 2;
+
+    code {
+      background: none;
+      color: inherit;
+      padding: 0;
+      font-size: inherit;
+      font-family: inherit;
+      box-shadow: none;
+    }
+
+    /* === SINTAXE HIGHLIGHTER (Cores Personalizadas) === */
+    .hljs-comment,
+    .hljs-quote {
+      color: #616161;
+      font-style: italic;
+    }
+
+    .hljs-variable, .hljs-template-variable, .hljs-attribute,
+    .hljs-tag, .hljs-name, .hljs-regexp, .hljs-link,
+    .hljs-name, .hljs-selector-id, .hljs-selector-class {
+      color: #f98181; /* Vermelho Suave */
+    }
+
+    .hljs-number, .hljs-meta, .hljs-built_in, .hljs-builtin-name,
+    .hljs-literal, .hljs-type, .hljs-params {
+      color: #fbbc88; /* Laranja */
+    }
+
+    .hljs-string, .hljs-symbol, .hljs-bullet {
+      color: #b9f18d; /* Verde Limão */
+    }
+
+    .hljs-title, .hljs-section {
+      color: #faf594; /* Amarelo */
+    }
+
+    .hljs-keyword, .hljs-selector-tag {
+      color: #70cff8; /* Azul Claro */
+    }
+
+    .hljs-emphasis {
+      font-style: italic;
+    }
+
+    .hljs-strong {
+      font-weight: 700;
+    }
+  }
+
+  /* === Menu de Linguagem & Botão Copiar === */
+  .lang-select {
+    position: absolute;
+    right: 0.75rem;
+    top: 0.75rem;
+    display: flex;
+    gap: 0.5rem;
+    z-index: 5;
+
+    /* Estilo Compartilhado (sobre fundo escuro) */
+    select, 
+    .btn-copy {
+      background-color: rgba(255, 255, 255, 0.08);
+      color: rgba(255, 255, 255, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: $radius-sm;
+      padding: 4px 10px;
+      font-size: 0.75rem;
+      font-family: $font-family-base;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      backdrop-filter: blur(4px);
+      outline: none;
+      
+      display: flex;
+      align-items: center;
+      gap: 6px;
+
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.15);
+        color: #fff;
+        border-color: rgba(255, 255, 255, 0.3);
+      }
+    }
+
+    /* === SELECT PERSONALIZADO === */
+    select {
+      appearance: none;
+      -webkit-appearance: none;
+      padding-right: 26px; /* Espaço para a seta */
+      text-align: left;
+      
+      /* Seta SVG Branca */
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='rgba(255, 255, 255, 0.7)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 4px center;
+      background-size: 14px;
+
+      /* Opções do Select (Fundo escuro obrigatório) */
+      option {
+        background-color: #1e1e1e;
+        color: #e0e0e0;
+      }
+    }
+
+    /* === BOTÃO DE COPIAR === */
+    .btn-copy {
+      &.copied {
+        color: var(--color-success); /* Verde do tema */
+        border-color: var(--color-success);
+        background-color: rgba(0, 220, 130, 0.15);
+      }
+    }
+  }
+}

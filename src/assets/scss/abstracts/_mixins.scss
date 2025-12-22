@@ -1,0 +1,29 @@
+@use "@/assets/scss/abstracts/variables" as *;
+@mixin heading-style($font-size, $margin-top: 1.5em) {
+  font-size: $font-size;
+  font-weight: 700;
+  margin-top: $margin-top;
+  margin-bottom: 0.5em;
+  color: var(--text-primary);
+  line-height: 1.2;
+}
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin scrollbar {
+  &::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: var(--border-light);
+    border-radius: 3px;
+  }
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+}

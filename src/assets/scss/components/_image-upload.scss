@@ -1,0 +1,55 @@
+@use "@/assets/scss/abstracts/variables" as *;
+
+.image-upload-wrapper {
+  margin: 1.5rem 0;
+}
+
+.upload-placeholder {
+  /* Borda tracejada usando a variável de borda do sistema */
+  border: 2px dashed var(--border-light);
+  border-radius: $radius-lg; 
+  padding: 2rem;
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  
+  background-color: var(--bg-secondary);
+  
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  
+  color: var(--text-secondary);
+  
+  /* Garante interação */
+  pointer-events: all; 
+
+  /* Estado Hover e Dragging (Quando segura o arquivo em cima) */
+  &:hover, 
+  &.is-dragging {
+
+    border-color: var(--color-brand);
+    
+    background-color: var(--color-brand-light);
+    
+    color: var(--color-brand);
+  }
+
+  .icon {
+    color: inherit;
+    
+    svg {
+      width: 32px; 
+      height: 32px;
+      stroke-width: 1.5; 
+    }
+  }
+  
+  .text {
+    font-size: 0.875rem; 
+    font-family: $font-family-base;
+    font-weight: 500;
+  }
+}

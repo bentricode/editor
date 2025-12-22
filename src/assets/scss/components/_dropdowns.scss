@@ -1,0 +1,44 @@
+@use "@/assets/scss/abstracts/variables" as *;
+
+.dropdown-wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.dropdown-trigger {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  
+  /* Transição suave de cor */
+  color: var(--text-secondary);
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: var(--text-primary);
+  }
+}
+
+.dropdown-content {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 0.25rem; 
+  
+  /* === TEMAS DO TABLER === */
+  background-color: var(--bg-modal); /* Branco (Light) / Escuro (Dark) */
+  border: 1px solid var(--border-light);
+  border-radius: $radius-md; 
+  
+  box-shadow: var(--shadow-float);
+  
+  min-width: 140px;
+  z-index: $z-index-floating; 
+  padding: 0.25rem; 
+  
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem; 
+  
+}

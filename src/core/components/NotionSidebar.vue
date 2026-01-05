@@ -60,38 +60,11 @@
 <script setup>
 import { ref, computed, onMounted, onBeforeUnmount, nextTick, h, watch } from 'vue'
 import { NodeSelection } from '@tiptap/pm/state'
+import { svgs } from '@/assets/js/svgs.js'
+import { buildIcons } from '@/utils/svgFactory.js'
 
-// --- ÍCONES  ---
-const IconCopy = () => h('svg', { xmlns: "http://www.w3.org/2000/svg", width: "16", height: "16", viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", "stroke-width": "2", "stroke-linecap": "round", "stroke-linejoin": "round" }, [
-    h('path', { stroke: "none", d: "M0 0h24v24H0z", fill: "none" }),
-    h('path', { d: "M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" }),
-    h('path', { d: "M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" })
-])
+const icons = buildIcons(svgs)
 
-const IconDuplicate = () => h('svg', { xmlns: "http://www.w3.org/2000/svg", width: "16", height: "16", viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", "stroke-width": "2", "stroke-linecap": "round", "stroke-linejoin": "round" }, [
-    h('path', { stroke: "none", d: "M0 0h24v24H0z", fill: "none" }),
-    h('path', { d: "M7 9.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" }),
-    h('path', { d: "M4.012 16.737a2 2 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" }),
-    h('path', { d: "M11 14h6" }),
-    h('path', { d: "M14 11v6" })
-])
-
-const IconTrash = () => h('svg', { xmlns: "http://www.w3.org/2000/svg", width: "16", height: "16", viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", "stroke-width": "2", "stroke-linecap": "round", "stroke-linejoin": "round" }, [
-    h('path', { stroke: "none", d: "M0 0h24v24H0z", fill: "none" }),
-    h('path', { d: "M4 7l16 0" }),
-    h('path', { d: "M10 11l0 6" }),
-    h('path', { d: "M14 11l0 6" }),
-    h('path', { d: "M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" }),
-    h('path', { d: "M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" })
-])
-
-const IconCut = () => h('svg', { xmlns: "http://www.w3.org/2000/svg", width: "16", height: "16", viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", "stroke-width": "2", "stroke-linecap": "round", "stroke-linejoin": "round" }, [
-    h('path', { stroke: "none", d: "M0 0h24v24H0z", fill: "none" }),
-    h('path', { d: "M6 7m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" }),
-    h('path', { d: "M6 17m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" }),
-    h('path', { d: "M8.6 8.6l10.4 10.4" }),
-    h('path', { d: "M8.6 15.4l10.4 -10.4" })
-])
 // Diretiva v-click-outside
 const vClickOutside = {
   mounted(el, binding) {
@@ -123,10 +96,10 @@ const menuStyle = computed(() => ({ top: `${menuTop.value}px` }))
 
 // --- DEFINIÇÃO DAS AÇÕES DISPONÍVEIS ---
 const allActions = [
-  { id: 'duplicate', label: 'Duplicar', icon: IconDuplicate, handler: () => duplicateNode(), shortcut: '' },
-  { id: 'copy', label: 'Copiar Texto', icon: IconCopy, handler: () => copyNodeText(), shortcut: '' },
-  { id: 'cut', label: 'Recortar', icon: IconCut, handler: () => cutNode(), shortcut: 'Ctrl+X' },
-  { id: 'delete', label: 'Excluir', icon: IconTrash, handler: () => deleteNode(), shortcut: '' },
+  { id: 'duplicate', label: 'Duplicar', icon: icons.duplicate, handler: () => duplicateNode(), shortcut: '' },
+  { id: 'copy', label: 'Copiar Texto', icon: icons.copy, handler: () => copyNodeText(), shortcut: '' },
+  { id: 'cut', label: 'Recortar', icon: icons.cut, handler: () => cutNode(), shortcut: 'Ctrl+X' },
+  { id: 'delete', label: 'Excluir', icon: icons.trash, handler: () => deleteNode(), shortcut: '' },
 ]
 
 // --- FILTRO DE PESQUISA ---

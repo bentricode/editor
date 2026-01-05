@@ -4,15 +4,10 @@
     <template #trigger="{ isOpen }">
       <button class="toolbar-btn" :class="{ 'is-active': isOpen }" title="Alinhamento do Texto">
         <component :is="currentIcon" />
-        
-        <svg 
-          xmlns="http://www.w3.org/2000/svg" 
-          width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-          class="arrow-icon"
+        <component :is="icons.dropdown.arrow" 
           :class="{ 'rotate': isOpen }"
-        >
-          <path d="M6 9l6 6l6 -6" />
-        </svg>
+        />
+        
       </button>
     </template>
 
@@ -23,7 +18,7 @@
         :class="{ 'is-selected': editor.isActive({ textAlign: 'left' }) }"
         @click="setAlignment('left'); close()"
       >
-        <IconLeft /> Esquerda
+        <component :is="icons.align.left" /> Esquerda
       </button>
 
       <button 
@@ -31,7 +26,7 @@
         :class="{ 'is-selected': editor.isActive({ textAlign: 'center' }) }"
         @click="setAlignment('center'); close()"
       >
-        <IconCenter /> Centralizar
+        <component :is="icons.align.center" /> Centralizar
       </button>
 
       <button 
@@ -39,7 +34,7 @@
         :class="{ 'is-selected': editor.isActive({ textAlign: 'right' }) }"
         @click="setAlignment('right'); close()"
       >
-        <IconRight /> Direita
+        <component :is="icons.align.right" /> Direita
       </button>
 
       <button 
@@ -47,7 +42,7 @@
         :class="{ 'is-selected': editor.isActive({ textAlign: 'justify' }) }"
         @click="setAlignment('justify'); close()"
       >
-        <IconJustify /> Justificado
+        <component :is="icons.align.justify" /> Justificado
       </button>
 
     </template>
@@ -58,23 +53,23 @@
 <script setup>
 import { computed, h } from 'vue'
 import BaseDropdown from '@/core/components/BaseDropdown.vue' 
+import { svgs } from '@/assets/js/svgs.js'
+import { buildIcons } from '@/utils/svgFactory.js'
+
+const icons = buildIcons(svgs)
+
 
 const props = defineProps({
   editor: { type: Object, required: true }
 })
 
-// --- ÍCONES SVGs  ---
-const IconLeft = () => h('svg', { xmlns:"http://www.w3.org/2000/svg", width:"20", height:"20", viewBox:"0 0 24 24", fill:"none", stroke:"currentColor", "stroke-width":"2", "stroke-linecap":"round", "stroke-linejoin":"round" }, [ h('path', { d:"M3 6h18" }), h('path', { d:"M3 12h12" }), h('path', { d:"M3 18h18" }) ])
-const IconCenter = () => h('svg', { xmlns:"http://www.w3.org/2000/svg", width:"20", height:"20", viewBox:"0 0 24 24", fill:"none", stroke:"currentColor", "stroke-width":"2", "stroke-linecap":"round", "stroke-linejoin":"round" }, [ h('path', { d:"M3 6h18" }), h('path', { d:"M6 12h12" }), h('path', { d:"M3 18h18" }) ])
-const IconRight = () => h('svg', { xmlns:"http://www.w3.org/2000/svg", width:"20", height:"20", viewBox:"0 0 24 24", fill:"none", stroke:"currentColor", "stroke-width":"2", "stroke-linecap":"round", "stroke-linejoin":"round" }, [ h('path', { d:"M3 6h18" }), h('path', { d:"M9 12h12" }), h('path', { d:"M3 18h18" }) ])
-const IconJustify = () => h('svg', { xmlns:"http://www.w3.org/2000/svg", width:"20", height:"20", viewBox:"0 0 24 24", fill:"none", stroke:"currentColor", "stroke-width":"2", "stroke-linecap":"round", "stroke-linejoin":"round" }, [ h('path', { d:"M3 6h18" }), h('path', { d:"M3 12h18" }), h('path', { d:"M3 18h18" }) ])
 
 // Determina qual ícone mostrar no botão principal
 const currentIcon = computed(() => {
-  if (props.editor.isActive({ textAlign: 'center' })) return IconCenter
-  if (props.editor.isActive({ textAlign: 'right' })) return IconRight
-  if (props.editor.isActive({ textAlign: 'justify' })) return IconJustify
-  return IconLeft // Padrão
+  if (props.editor.isActive({ textAlign: 'center' })) return icons.align.center
+  if (props.editor.isActive({ textAlign: 'right' })) return icons.align.right
+  if (props.editor.isActive({ textAlign: 'justify' })) return icons.align.justify
+  return icons.align.left // Padrão
 })
 
 const setAlignment = (align) => {

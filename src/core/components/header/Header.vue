@@ -8,16 +8,12 @@
 
         <button v-if="item === 'undo'" @click="editor.chain().focus().undo().run()"
           :disabled="!editor.can().chain().focus().undo().run()" v-tippy="'Desfazer'">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M9 14l-4 -4l4 -4" /><path d="M5 10h11a4 4 0 1 1 0 8h-1" />
-          </svg>
+          <component :is="icons.header.undo" />
         </button>
 
         <button v-if="item === 'redo'" @click="editor.chain().focus().redo().run()"
           :disabled="!editor.can().chain().focus().redo().run()" v-tippy="'Refazer'">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M15 14l4 -4l-4 -4" /><path d="M19 10h-11a4 4 0 1 0 0 8h1" />
-          </svg>
+          <component :is="icons.header.redo" />
         </button>
 
         <HeadingDropdown v-if="item === 'text'" :editor="editor" />
@@ -31,53 +27,39 @@
         <button v-if="item === 'bold'" @click="editor.chain().focus().toggleBold().run()"
           :disabled="!editor.can().chain().focus().toggleBold().run()"
           :class="{ 'is-active': editor.isActive('bold') }" v-tippy="'Negrito'">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M7 5h6a3.5 3.5 0 0 1 0 7h-6z"></path><path d="M13 12h1a3.5 3.5 0 0 1 0 7h-7v-7"></path>
-          </svg>
+          <component :is="icons.header.bold" />
         </button>
 
         <button v-if="item === 'italic'" @click="editor.chain().focus().toggleItalic().run()"
           :disabled="!editor.can().chain().focus().toggleItalic().run()"
           :class="{ 'is-active': editor.isActive('italic') }" v-tippy="'Itálico'">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M11 5l6 0"></path><path d="M7 19l6 0"></path><path d="M14 5l-4 14"></path>
-          </svg>
+          <component :is="icons.header.italic" />
         </button>
 
         <button v-if="item === 'strikethrough'" @click="editor.chain().focus().toggleStrike().run()"
           :disabled="!editor.can().chain().focus().toggleStrike().run()"
           :class="{ 'is-active': editor.isActive('strike') }" v-tippy="'Tachado'">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M5 12l14 0" /><path d="M16 6.5a4 2 0 0 0 -4 -1.5h-1a3.5 3.5 0 0 0 0 7h2a3.5 3.5 0 0 1 0 7h-1.5a4 2 0 0 1 -4 -1.5" />
-          </svg>
+          <component :is="icons.header.strikethrough" />
         </button>
 
         <button v-if="item === 'code'" @click="editor.chain().focus().toggleCode().run()"
           :disabled="!editor.can().chain().focus().toggleCode().run()"
           :class="{ 'is-active': editor.isActive('code') }" v-tippy="'Código Inline'">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M7 8l-4 4l4 4" /><path d="M17 8l4 4l-4 4" /><path d="M14 4l-4 16" />
-          </svg>
+          <component :is="icons.header.code" />
         </button>
 
-        <button v-if="item === 'blockCode' || item === 'codeBlock'" @click="editor.chain().focus().toggleCodeBlock().run()"
+        <button v-if="item === 'codeBlock'" @click="editor.chain().focus().toggleCodeBlock().run()"
           :class="{ 'is-active': editor.isActive('codeBlock') }" v-tippy="'Bloco de Código'">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M14.5 4h2.5a3 3 0 0 1 3 3v10a3 3 0 0 1 -3 3h-10a3 3 0 0 1 -3 -3v-5" /><path d="M6 5l-2 2l2 2" /><path d="M10 9l2 -2l-2 -2" />
-          </svg>
+          <component :is="icons.header.codeBlock" />
         </button>
 
         <button v-if="item === 'blockQuote'" @click="editor.chain().focus().toggleBlockquote().run()"
           :class="{ 'is-active': editor.isActive('blockquote') }" v-tippy="'Citação'">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M6 15h15" /><path d="M21 19h-15" /><path d="M15 11h6" /><path d="M21 7h-6" /><path d="M9 9h1a1 1 0 1 1 -1 1v-2.5a2 2 0 0 1 2 -2" /><path d="M3 9h1a1 1 0 1 1 -1 1v-2.5a2 2 0 0 1 2 -2" />
-          </svg>
+          <component :is="icons.header.blockQuote" />
         </button>
 
         <button v-if="item === 'imageUpload'" v-tippy="$t('header.image_upload')" @click="addUploadBlock">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline>
-          </svg>
+          <component :is="icons.header.imageUpload" />
         </button>
 
       </template>
@@ -86,15 +68,7 @@
       
       <button @click="toggleFullscreen"
         v-tippy="!is_full_screen ? $t('header.full_screen') : $t('header.exit_full_screen')">
-        <svg v-if="!is_full_screen" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-            stroke-linejoin="round">
-            <path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M16 4l4 0l0 4" /><path d="M14 10l6 -6" /><path d="M8 20l-4 0l0 -4" /><path d="M4 20l6 -6" /><path d="M16 20l4 0l0 -4" /><path d="M14 14l6 6" /><path d="M8 4l-4 0l0 4" /><path d="M4 4l6 6" />
-        </svg>
-        <svg v-if="is_full_screen" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M5 9l4 0l0 -4" /><path d="M3 3l6 6" /><path d="M5 15l4 0l0 4" /><path d="M3 21l6 -6" /><path d="M19 9l-4 0l0 -4" /><path d="M15 9l6 -6" /><path d="M19 15l-4 0l0 4" /><path d="M15 15l6 6" />
-        </svg>
+        <component :is="is_full_screen ? icons.header.exitFullScreen : icons.header.fullScreen" />
       </button>
 
     </div>
@@ -107,7 +81,10 @@ import AlignDropdown from '@/core/components/header/AlignDropdown.vue'
 import ListDropdown from '@/core/components/header/ListDropdown.vue'
 import LinkDropdown from '@/core/components/header/LinkDropdown.vue'
 import { onUnmounted, ref, computed } from 'vue'
+import { svgs } from '@/assets/js/svgs.js'
+import { buildIcons } from '@/utils/svgFactory.js'
 
+const icons = buildIcons(svgs)
 const props = defineProps({
     editor: { type: Object, required: true },
     options: { type: Object, default: () => ({}) },

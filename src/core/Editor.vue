@@ -65,6 +65,7 @@ import Commands from '@/assets/js/extensions/Commands.js'
 import suggestion from '@/assets/js/extensions/suggestion.js'
 import FloatMenu from './components/FloatMenu.vue'
 
+
 const editor_ref = ref(null)
 provide('editor_ref', editor_ref)
 const header_ref = ref(null)

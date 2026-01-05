@@ -14,7 +14,7 @@
                 @mouseenter="selectedIndex = index"
                 :ref="(el) => itemRefs[index] = el"
             >
-                <div v-if="item.icon" class="icon">
+                <div v-if="item.icon" >
                      <component :is="item.icon" />
                 </div>
 
@@ -30,6 +30,7 @@
 
 <script setup>
 import { ref, watch, nextTick } from 'vue'
+
 
 const props = defineProps({
     items: {

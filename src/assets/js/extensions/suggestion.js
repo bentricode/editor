@@ -2,39 +2,45 @@ import { VueRenderer } from '@tiptap/vue-3'
 import tippy from 'tippy.js'
 import CommandsList from '@/core/components/CommandsList.vue'
 
-import { h } from 'vue'
-const IconH1 = h('svg', { xmlns:"http://www.w3.org/2000/svg", width:"24", height:"24", viewBox:"0 0 24 24", fill:"none", stroke:"currentColor", "stroke-width":"2", "stroke-linecap":"round", "stroke-linejoin":"round" }, [ h('path', { d:"M4 12h16" }), h('path', { d:"M4 18V6" }), h('path', { d:"M20 18V6" }) ])
+import { svgs } from '@/assets/js/svgs.js'
+import { buildIcons } from '@/utils/svgFactory.js'
+const icons = buildIcons(svgs)
+
 
 export default {
   items: ({ query }) => {
     return [
       {
         title: 'Heading 1',
-        icon: IconH1,
+        icon: icons.header.h1,
         command: ({ editor, range }) => {
           editor.chain().focus().deleteRange(range).setNode('heading', { level: 1 }).run()
         },
       },
       {
         title: 'Heading 2',
+        icon: icons.header.h2,
         command: ({ editor, range }) => {
           editor.chain().focus().deleteRange(range).setNode('heading', { level: 2 }).run()
         },
       },
       {
         title: 'Bullet List',
+        icon: icons.list.unordered,
         command: ({ editor, range }) => {
           editor.chain().focus().deleteRange(range).toggleBulletList().run()
         },
       },
       {
         title: 'Code Block',
+        icon: icons.header.codeBlock,
         command: ({ editor, range }) => {
           editor.chain().focus().deleteRange(range).toggleCodeBlock().run()
         },
       },
       {
         title: 'Image',
+        icon: icons.header.imageUpload,
         command: ({ editor, range }) => {
           editor.chain().focus().deleteRange(range).addImageUploadBlock().run()
         },

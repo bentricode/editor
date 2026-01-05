@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/bentricode/editor/compare/v1.1.0...v1.2.0) (2026-01-05)
+
+
+### Features
+
+* update editor layout and toolbar options; bump version to 1.1.0 ([38c1644](https://github.com/bentricode/editor/commit/38c16448b845e28850a60c32660a72bbbc40aebd))
+
 # [1.1.0](https://github.com/bentricode/editor/compare/v1.0.0...v1.1.0) (2025-12-22)
 
 

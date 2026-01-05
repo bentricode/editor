@@ -4,13 +4,16 @@
   @dragover="handleDragOver" @drop="handleDrop" @dragleave="handleDragLeave"
   ref="editor_ref" v-if="editor" class="v-bentri-editor " :class="{ 'v-bentri-editor-full-screen': header_ref?.is_full_screen,
     'dark-mode': props.theme === 'dark',
-   }">
-    <Header ref="header_ref" :editor="editor" />
+  }">
+    <Header ref="header_ref" :editor="editor"
+    :options="props.options"
+    />
 
     <div class="editor-layout relative" >
 
       <NotionSidebar :editor="editor" 
       @drag-end="dragState.show = false"
+      
       />
 
       <div class="drop-indicator" v-if="dragState.show" :style="{
@@ -70,6 +73,10 @@ const props = defineProps({
   modelValue: {
     type: String,
     default: '',
+  },
+  options:{
+    type: Object,
+    default: () => ({}),
   },
   theme:{
     type: String,

@@ -1,8 +1,8 @@
 @use "@/assets/scss/abstracts/variables" as *;
 
 /* ==========================================================================
-   1. CONTAINER PRINCIPAL DO EDITOR (O CARD)
-   ========================================================================== */
+  1. CONTAINER PRINCIPAL DO EDITOR (O CARD)
+  ========================================================================== */
 .v-bentri-editor {
   background-color: var(--bg-primary);
   color: var(--text-primary);
@@ -17,11 +17,20 @@
   
   position: relative;
   transition: background-color 0.2s ease, border-color 0.2s ease;
-  border: 1px solid var(--border-editor);
+  border: 1px solid var(--border-light);
+
+  .toolbar-separator {
+    width: 2px;
+    height: 24px;
+    background-color: var(--border-light); 
+    margin: 0 8px;
+    display: inline-block;
+    vertical-align: middle;
+  }
 }
 
 /* ==========================================================================
-   2. LAYOUT DO HEADER (CONTROL GROUP)
+  2. LAYOUT DO HEADER (CONTROL GROUP)
    ========================================================================== */
 .control-group {
     background-color: var(--bg-primary);
@@ -45,10 +54,10 @@
     border-top-right-radius: $radius-md;
 
     .button-group {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-        justify-content: center;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 4px; 
     }
 }
 

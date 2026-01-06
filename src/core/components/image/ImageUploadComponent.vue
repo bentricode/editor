@@ -11,10 +11,10 @@
       <input type="file" ref="fileInput" hidden accept="image/*" @change="onFileChange" />
       
       <div class="icon">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+        <component :is="icons.header.imageUpload" />
       </div>
-      <span class="text" v-if="!isDragging">Arraste uma imagem ou clique para upload</span>
-      <span class="text" v-else>Solte para inserir</span>
+      <span class="text" v-if="!isDragging">{{t('header.image.drag')}}</span>
+      <span class="text" v-else>{{t('header.image.drop')}}</span>
     </div>
   </node-view-wrapper>
 </template>
@@ -22,6 +22,12 @@
 <script setup>
 import { NodeViewWrapper, nodeViewProps } from '@tiptap/vue-3'
 import { ref } from 'vue'
+import { useI18n } from 'vue-i18n'
+import { svgs } from '@/assets/js/svgs.js'
+import { buildIcons } from '@/utils/svgFactory.js'
+const { t } = useI18n()
+
+const icons = buildIcons(svgs)
 
 const props = defineProps(nodeViewProps)
 const fileInput = ref(null)

@@ -58,7 +58,7 @@
           <component :is="icons.header.blockQuote" />
         </button>
 
-        <button v-if="item === 'imageUpload'" v-tippy="$t('header.image_upload')" @click="addUploadBlock">
+        <button v-if="item === 'imageUpload'" v-tippy="$t('header.image.name')" @click="addUploadBlock">
           <component :is="icons.header.imageUpload" />
         </button>
 

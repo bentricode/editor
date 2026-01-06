@@ -5,17 +5,11 @@
         </div>
 
         <div class="scroller">
-            <button 
-                class="item" 
-                :class="{ 'is-selected': index === selectedIndex }" 
-                v-for="(item, index) in items"
-                :key="index" 
-                @click="selectItem(index)" 
-                @mouseenter="selectedIndex = index"
-                :ref="(el) => itemRefs[index] = el"
-            >
-                <div v-if="item.icon" >
-                     <component :is="item.icon" />
+            <button class="item" :class="{ 'is-selected': index === selectedIndex }" v-for="(item, index) in items"
+                :key="index" @click="selectItem(index)" @mouseenter="selectedIndex = index"
+                :ref="(el) => itemRefs[index] = el">
+                <div v-if="item.icon">
+                    <component :is="item.icon" />
                 </div>
 
                 <div class="label">{{ item.title }}</div>
@@ -45,7 +39,7 @@ const props = defineProps({
 })
 
 const selectedIndex = ref(0)
-const itemRefs = ref([]) 
+const itemRefs = ref([])
 
 // Resetar seleção quando a lista muda
 watch(() => props.items, () => {
@@ -105,4 +99,3 @@ const scrollToSelected = () => {
 
 defineExpose({ onKeyDown })
 </script>
-

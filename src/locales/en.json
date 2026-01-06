@@ -2,7 +2,13 @@
     "header": {
         "full_screen": "Full screen",
         "exit_full_screen": "Exit full screen",
-        "image_upload": "Insert image",
+        "image": {
+            "name": "Insert image",
+            "trade": "Replace image",
+            "remove": "Remove image",
+            "drag": "Drag an image or click to upload",
+            "drop": "Drop to insert"
+        },
         "link": {
             "name": "Insert link",
             "blank": "Open in new tab",

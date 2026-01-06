@@ -2,7 +2,13 @@
     "header": {
         "full_screen": "Tela cheia",
         "exit_full_screen": "Sair da tela cheia",
-        "image_upload": "Inserir imagem",
+        "image": {
+            "name": "Inserir imagem",
+            "trade": "Trocar imagem",
+            "remove": "Remover imagem",
+            "drag": "Arraste uma imagem ou clique para enviar",
+            "drop": "Solte para inserir"
+        },
         "link": {
             "name": "Inserir link",
             "blank": "Abrir em uma nova aba",

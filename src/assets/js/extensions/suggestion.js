@@ -66,7 +66,7 @@ export default {
         },
       },
       {
-        title: t('header.image_upload'),
+        title: t('header.image.name'),
         searchTerms: ['imagem', 'foto', 'upload', 'img', 'pic'],
         icon: icons.header.imageUpload,
         command: ({ editor, range }) => {

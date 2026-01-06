@@ -2,7 +2,9 @@
   <BaseDropdown>
     
     <template #trigger="{ isOpen }">
-      <button class="toolbar-btn" :class="{ 'is-active': isOpen }">
+      <button 
+      v-tippy="$t('header.text.name')"
+      class="toolbar-btn" :class="{ 'is-active': isOpen }">
         <component :is="icons.header.text" />
         <component :is="icons.dropdown.arrow" :class="{ 'rotate': isOpen }"/>
         
@@ -16,7 +18,7 @@
         :class="{ 'is-selected': editor.isActive('paragraph') }"
         @click="setParagraph(); close()"
       >
-        Paragraph
+        {{ t('header.text.normal') }}
       </button>
 
       <button 
@@ -27,7 +29,7 @@
         :style="{ fontSize: getFontSize(level), fontWeight: 'bold' }"
         @click="toggleHeading(level); close()"
       >
-        Heading {{ level }}
+        {{ t(`header.text.heading_${level}`) }} 
       </button>
       
     </template>
@@ -40,7 +42,8 @@ import { computed } from 'vue'
 import BaseDropdown from '@/core/components/BaseDropdown.vue' 
 import { svgs } from '@/assets/js/svgs.js'
 import { buildIcons } from '@/utils/svgFactory.js'
-
+import { useI18n } from 'vue-i18n'
+const { t } = useI18n()
 const icons = buildIcons(svgs)
 const props = defineProps({
   editor: { type: Object, required: true }

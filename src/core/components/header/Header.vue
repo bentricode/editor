@@ -7,12 +7,12 @@
         <div v-if="item === 'separator'" class="toolbar-separator"></div>
 
         <button v-if="item === 'undo'" @click="editor.chain().focus().undo().run()"
-          :disabled="!editor.can().chain().focus().undo().run()" v-tippy="'Desfazer'">
+          :disabled="!editor.can().chain().focus().undo().run()" v-tippy="$t('header.undo')">
           <component :is="icons.header.undo" />
         </button>
 
         <button v-if="item === 'redo'" @click="editor.chain().focus().redo().run()"
-          :disabled="!editor.can().chain().focus().redo().run()" v-tippy="'Refazer'">
+          :disabled="!editor.can().chain().focus().redo().run()" v-tippy="$t('header.redo')">
           <component :is="icons.header.redo" />
         </button>
 
@@ -26,35 +26,35 @@
 
         <button v-if="item === 'bold'" @click="editor.chain().focus().toggleBold().run()"
           :disabled="!editor.can().chain().focus().toggleBold().run()"
-          :class="{ 'is-active': editor.isActive('bold') }" v-tippy="'Negrito'">
+          :class="{ 'is-active': editor.isActive('bold') }" v-tippy="$t('header.bold')">
           <component :is="icons.header.bold" />
         </button>
 
         <button v-if="item === 'italic'" @click="editor.chain().focus().toggleItalic().run()"
           :disabled="!editor.can().chain().focus().toggleItalic().run()"
-          :class="{ 'is-active': editor.isActive('italic') }" v-tippy="'Itálico'">
+          :class="{ 'is-active': editor.isActive('italic') }" v-tippy="$t('header.italic')">
           <component :is="icons.header.italic" />
         </button>
 
         <button v-if="item === 'strikethrough'" @click="editor.chain().focus().toggleStrike().run()"
           :disabled="!editor.can().chain().focus().toggleStrike().run()"
-          :class="{ 'is-active': editor.isActive('strike') }" v-tippy="'Tachado'">
+          :class="{ 'is-active': editor.isActive('strike') }" v-tippy="$t('header.strikethrough')">
           <component :is="icons.header.strikethrough" />
         </button>
 
         <button v-if="item === 'code'" @click="editor.chain().focus().toggleCode().run()"
           :disabled="!editor.can().chain().focus().toggleCode().run()"
-          :class="{ 'is-active': editor.isActive('code') }" v-tippy="'Código Inline'">
+          :class="{ 'is-active': editor.isActive('code') }" v-tippy="$t('header.code')">
           <component :is="icons.header.code" />
         </button>
 
         <button v-if="item === 'codeBlock'" @click="editor.chain().focus().toggleCodeBlock().run()"
-          :class="{ 'is-active': editor.isActive('codeBlock') }" v-tippy="'Bloco de Código'">
+          :class="{ 'is-active': editor.isActive('codeBlock') }" v-tippy="$t('header.code_block')">
           <component :is="icons.header.codeBlock" />
         </button>
 
         <button v-if="item === 'blockQuote'" @click="editor.chain().focus().toggleBlockquote().run()"
-          :class="{ 'is-active': editor.isActive('blockquote') }" v-tippy="'Citação'">
+          :class="{ 'is-active': editor.isActive('blockquote') }" v-tippy="$t('header.block_quote')">
           <component :is="icons.header.blockQuote" />
         </button>
 
@@ -70,7 +70,7 @@
         v-tippy="!is_full_screen ? $t('header.full_screen') : $t('header.exit_full_screen')">
         <component :is="is_full_screen ? icons.header.exitFullScreen : icons.header.fullScreen" />
       </button>
-
+      
     </div>
   </div>
 </template>
@@ -85,6 +85,7 @@ import { svgs } from '@/assets/js/svgs.js'
 import { buildIcons } from '@/utils/svgFactory.js'
 
 const icons = buildIcons(svgs)
+
 const props = defineProps({
     editor: { type: Object, required: true },
     options: { type: Object, default: () => ({}) },

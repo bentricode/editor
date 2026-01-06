@@ -1,8 +1,41 @@
 {
     "header": {
-        "title": "Editor V-Bentri",
         "full_screen": "Tela cheia",
         "exit_full_screen": "Sair da tela cheia",
-        "image_upload": "Inserir imagem"
+        "image_upload": "Inserir imagem",
+        "link_insert": "Inserir link",
+        "code_block": "Bloco de código",
+        "code": "Código",
+        "block_quote": "Citação",
+        "align": {
+            "name": "Alinhamento",
+            "left": "Esquerda",
+            "center": "Centralizar",
+            "right": "Direita",
+            "justify": "Justificado"
+        },
+        "list": {
+            "bullet": "Lista com marcadores",
+            "ordered": "Lista numerada"
+        },
+        "bold": "Negrito",
+        "italic": "Itálico",
+        "strikethrough": "Tachado",
+        "text":{
+            "name": "Tamanho do texto", 
+            "normal": "Texto",
+            "heading_1": "Título 1",
+            "heading_2": "Título 2",
+            "heading_3": "Título 3",
+            "heading_4": "Título 4",
+            "heading_5": "Título 5",
+            "heading_6": "Título 6"
+        },
+        "undo": "Desfazer",
+        "redo": "Refazer"
+    },
+    "command_list":{
+        "suggestions": "Sugestões de comandos",
+        "no_results": "Nenhum comando encontrado"
     }
 }

@@ -1,7 +1,7 @@
 <template>
     <div class="command-list-items">
         <div class="header-title" v-if="items.length > 0">
-            Sugestões
+            {{ t('command_list.suggestions') }}
         </div>
 
         <div class="scroller">
@@ -23,14 +23,15 @@
         </div>
 
         <div class="no-result" v-if="items.length === 0">
-            Sem resultados
+            {{ t('command_list.no_results') }}
         </div>
     </div>
 </template>
 
 <script setup>
 import { ref, watch, nextTick } from 'vue'
-
+import { useI18n } from 'vue-i18n'
+const { t } = useI18n()
 
 const props = defineProps({
     items: {

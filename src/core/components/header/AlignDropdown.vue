@@ -2,7 +2,9 @@
   <BaseDropdown>
     
     <template #trigger="{ isOpen }">
-      <button class="toolbar-btn" :class="{ 'is-active': isOpen }" title="Alinhamento do Texto">
+      <button
+      v-tippy="$t('header.align.name')"
+      class="toolbar-btn" :class="{ 'is-active': isOpen }" >
         <component :is="currentIcon" />
         <component :is="icons.dropdown.arrow" 
           :class="{ 'rotate': isOpen }"
@@ -18,7 +20,7 @@
         :class="{ 'is-selected': editor.isActive({ textAlign: 'left' }) }"
         @click="setAlignment('left'); close()"
       >
-        <component :is="icons.align.left" /> Esquerda
+        <component :is="icons.align.left" /> {{t('header.align.left')}}
       </button>
 
       <button 
@@ -26,7 +28,7 @@
         :class="{ 'is-selected': editor.isActive({ textAlign: 'center' }) }"
         @click="setAlignment('center'); close()"
       >
-        <component :is="icons.align.center" /> Centralizar
+        <component :is="icons.align.center" /> {{ t('header.align.center') }}
       </button>
 
       <button 
@@ -34,7 +36,7 @@
         :class="{ 'is-selected': editor.isActive({ textAlign: 'right' }) }"
         @click="setAlignment('right'); close()"
       >
-        <component :is="icons.align.right" /> Direita
+        <component :is="icons.align.right" /> {{ t('header.align.right') }}
       </button>
 
       <button 
@@ -42,7 +44,7 @@
         :class="{ 'is-selected': editor.isActive({ textAlign: 'justify' }) }"
         @click="setAlignment('justify'); close()"
       >
-        <component :is="icons.align.justify" /> Justificado
+        <component :is="icons.align.justify" /> {{ t('header.align.justify') }}
       </button>
 
     </template>
@@ -55,7 +57,8 @@ import { computed, h } from 'vue'
 import BaseDropdown from '@/core/components/BaseDropdown.vue' 
 import { svgs } from '@/assets/js/svgs.js'
 import { buildIcons } from '@/utils/svgFactory.js'
-
+import { useI18n } from 'vue-i18n'
+const { t } = useI18n()
 const icons = buildIcons(svgs)
 
 

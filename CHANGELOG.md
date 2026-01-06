@@ -1,3 +1,10 @@
+# [1.6.0](https://github.com/bentricode/editor/compare/v1.5.0...v1.6.0) (2026-01-06)
+
+
+### Features
+
+* add utility functions to check editor state and pending uploads ([3bf9acb](https://github.com/bentricode/editor/commit/3bf9acb4212aa521c57994d41cb2e0a1c31287be))
+
 # [1.5.0](https://github.com/bentricode/editor/compare/v1.4.0...v1.5.0) (2026-01-06)
 
 

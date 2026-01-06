@@ -64,7 +64,8 @@ import TextAlign from '@tiptap/extension-text-align'
 import Commands from '@/assets/js/extensions/Commands.js'
 import suggestion from '@/assets/js/extensions/suggestion.js'
 import FloatMenu from './components/FloatMenu.vue'
-
+import { useI18n } from 'vue-i18n' 
+const { t, locale: i18nLocale } = useI18n()
 
 const editor_ref = ref(null)
 provide('editor_ref', editor_ref)
@@ -78,6 +79,10 @@ const props = defineProps({
   options:{
     type: Object,
     default: () => ({}),
+  },
+  locale:{
+    type: String,
+    default: 'pt-br', // en, pt-br
   },
   theme:{
     type: String,
@@ -155,7 +160,7 @@ const editor = useEditor({
 
 
     Placeholder.configure({
-      placeholder: 'Type \'/\' for a menu',
+      placeholder: () => t('command_list.open'),
       //Isso faz o placeholder funcionar em parágrafos internos, 
       // não só quando o documento inteiro está vazio.
       includeChildren: true,
@@ -257,6 +262,11 @@ const handleDrop = (event) => {
   
   dragState.targetPos = -1
 }
+watch(() => props.locale, (newLocale) => {
+  if (newLocale) {
+    i18nLocale.value = newLocale
+  }
+}, { immediate: true })
 watch(() => props.modelValue, (newValue) => {
   // Só atualiza se o conteúdo for diferente para evitar loop infinito
   const isSame = editor.value.getHTML() === newValue

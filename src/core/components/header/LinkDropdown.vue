@@ -3,7 +3,7 @@
     <template #trigger="{ isOpen }">
       <button 
         :class="{ 'is-active': editor.isActive('link'), 'is-open': isOpen }"
-        v-tippy="'Inserir Link'"
+        v-tippy="$t('header.link.name')"
       >
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -21,7 +21,7 @@
           ref="inputRef"
           v-model="href" 
           type="text" 
-          placeholder="Cole um link..." 
+          :placeholder="$t('header.link.placeholder')" 
           @keydown.enter.prevent="saveLink(slotProps?.close)"
           @keydown.esc="slotProps?.close && slotProps.close()"
         />
@@ -29,7 +29,7 @@
         <div class="divider"></div>
 
         <div class="actions">
-            <button class="action-btn confirm" @click="saveLink(slotProps?.close)" v-tippy="'Salvar'">
+            <button class="action-btn confirm" @click="saveLink(slotProps?.close)" v-tippy="$t('header.link.save')">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 12l14 0" /><path d="M15 16l4 -4" /><path d="M15 8l4 4" /></svg>
             </button>
 
@@ -37,7 +37,7 @@
                 class="action-btn" 
                 :class="{ 'is-active': target === '_blank' }"
                 @click="toggleTarget"
-                v-tippy="'Abrir em nova aba'"
+                v-tippy="$t('header.link.blank')"
             >
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 6h-6a2 2 0 0 0 -2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-6" /><path d="M11 13l9 -9" /><path d="M15 4h5v5" /></svg>
             </button>

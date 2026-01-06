@@ -3,7 +3,12 @@
         "full_screen": "Full screen",
         "exit_full_screen": "Exit full screen",
         "image_upload": "Insert image",
-        "link_insert": "Insert link",
+        "link": {
+            "name": "Insert link",
+            "blank": "Open in new tab",
+            "save": "Save link",
+            "placeholder": "Type or paste here..."
+        },
         "code_block": "Code block",
         "code": "Code",
         "block_quote": "Blockquote",
@@ -15,6 +20,7 @@
             "justify": "Justify"
         },
         "list": {
+            "name": "List type",
             "bullet": "Bullet list",
             "ordered": "Ordered list"
         },
@@ -35,7 +41,17 @@
         "redo": "Redo"
     },
     "command_list": {
+        "open": "Type '/' to open the command menu",
         "suggestions": "Command suggestions",
         "no_results": "No commands found"
+    },
+    "actions": {
+        "name": "Actions",
+        "placeholder": "Search actions...",
+        "no_results": "No actions found",
+        "duplicate": "Duplicate",
+        "copy": "Copy text",
+        "delete": "Delete",
+        "cut": "Cut"
     }
 }

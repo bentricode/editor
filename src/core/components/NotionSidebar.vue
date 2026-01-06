@@ -25,12 +25,12 @@
              ref="searchInput"
              v-model="searchQuery" 
              type="text" 
-             placeholder="Pesquisar ações..."
+             :placeholder="$t('actions.placeholder')"
              @click.stop
            />
         </div>
 
-        <div class="menu-label">Ações</div>
+        <div class="menu-label">{{t('actions.name')}}</div>
 
         <div class="menu-scroller">
           <button 
@@ -47,7 +47,7 @@
           </button>
 
           <div v-if="filteredActions.length === 0" class="no-results">
-            Nenhuma ação encontrada
+            {{ t('actions.no_results') }}
           </div>
         </div>
 
@@ -62,7 +62,8 @@ import { ref, computed, onMounted, onBeforeUnmount, nextTick, h, watch } from 'v
 import { NodeSelection } from '@tiptap/pm/state'
 import { svgs } from '@/assets/js/svgs.js'
 import { buildIcons } from '@/utils/svgFactory.js'
-
+import { useI18n } from 'vue-i18n'
+const { t } = useI18n()
 const icons = buildIcons(svgs)
 
 // Diretiva v-click-outside
@@ -96,10 +97,10 @@ const menuStyle = computed(() => ({ top: `${menuTop.value}px` }))
 
 // --- DEFINIÇÃO DAS AÇÕES DISPONÍVEIS ---
 const allActions = [
-  { id: 'duplicate', label: 'Duplicar', icon: icons.duplicate, handler: () => duplicateNode(), shortcut: '' },
-  { id: 'copy', label: 'Copiar Texto', icon: icons.copy, handler: () => copyNodeText(), shortcut: '' },
-  { id: 'cut', label: 'Recortar', icon: icons.cut, handler: () => cutNode(), shortcut: 'Ctrl+X' },
-  { id: 'delete', label: 'Excluir', icon: icons.trash, handler: () => deleteNode(), shortcut: '' },
+  { id: 'duplicate', label: t('actions.duplicate'), icon: icons.duplicate, handler: () => duplicateNode(), shortcut: '' },
+  { id: 'copy', label: t('actions.copy'), icon: icons.copy, handler: () => copyNodeText(), shortcut: '' },
+  { id: 'cut', label: t('actions.cut'), icon: icons.cut, handler: () => cutNode(), shortcut: 'Ctrl+X' },
+  { id: 'delete', label: t('actions.delete'), icon: icons.trash, handler: () => deleteNode(), shortcut: '' },
 ]
 
 // --- FILTRO DE PESQUISA ---

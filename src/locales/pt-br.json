@@ -3,7 +3,12 @@
         "full_screen": "Tela cheia",
         "exit_full_screen": "Sair da tela cheia",
         "image_upload": "Inserir imagem",
-        "link_insert": "Inserir link",
+        "link": {
+            "name": "Inserir link",
+            "blank": "Abrir em uma nova aba",
+            "save": "Salvar link",
+            "placeholder": "Digite ou cole aqui..."
+        },
         "code_block": "Bloco de código",
         "code": "Código",
         "block_quote": "Citação",
@@ -15,6 +20,7 @@
             "justify": "Justificado"
         },
         "list": {
+            "name": "Tipo de lista",
             "bullet": "Lista com marcadores",
             "ordered": "Lista numerada"
         },
@@ -35,7 +41,17 @@
         "redo": "Refazer"
     },
     "command_list":{
+        "open": "Digite '/' para abrir o menu de comandos",
         "suggestions": "Sugestões de comandos",
         "no_results": "Nenhum comando encontrado"
+    },
+    "actions":{
+        "name": "Ações",
+        "placeholder": "Pesquisar ações...",
+        "no_results": "Nenhuma ação encontrada",
+        "duplicate": "Duplicar",
+        "copy": "Copiar Texto",
+        "delete": "Excluir",
+        "cut": "Recortar"
     }
 }

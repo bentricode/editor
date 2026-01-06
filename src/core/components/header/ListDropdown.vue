@@ -2,7 +2,7 @@
   <Dropdown>
     
     <template #trigger="{ isOpen }">
-      <button class="toolbar-btn" :class="{ 'is-active': isActive || isOpen }" v-tippy="'Listas'">
+      <button class="toolbar-btn" :class="{ 'is-active': isActive || isOpen }" v-tippy="$t('header.list.name')">
         <component :is="editor.isActive('orderedList') ? icons.list.ordered : icons.list.unordered" />
 
         <component 
@@ -21,7 +21,7 @@
         @click="editor.chain().focus().toggleBulletList().run(); close && close()"
       >
         <component :is="icons.list.unordered"  />
-        Lista com Marcadores
+        {{ t('header.list.bullet') }}
       </button>
 
       <button 
@@ -30,7 +30,7 @@
         @click="editor.chain().focus().toggleOrderedList().run(); close && close()"
       >
         <component :is="icons.list.ordered"  />
-        Lista Numerada
+       {{ t('header.list.ordered') }}
       </button>
       
     </template>
@@ -43,6 +43,8 @@ import Dropdown from '@/core/components/BaseDropdown.vue'
 import { computed } from 'vue'
 import { svgs } from '@/assets/js/svgs.js'
 import { buildIcons } from '@/utils/svgFactory.js'
+import { useI18n } from 'vue-i18n'
+const { t } = useI18n()
 const icons = buildIcons(svgs)
 
 const props = defineProps({

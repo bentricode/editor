@@ -335,10 +335,44 @@ const updateImageUrls = (replacements) => {
 const getHTML = () => {
   return editor.value ? editor.value.getHTML() : ''
 }
+const isEmpty = () => {
+  // Se o editor não carregou, considera vazio (true)
+  if (!editor.value) return true
+  
+  // Usa a função nativa do Tiptap para verificar se está vazio
+  return editor.value.isEmpty
+}
 
+// Função auxiliar genérica 
+// Ela serve para encontrar qualquer nó e parar IMEDIATAMENTE quando achar
+const findNode = (doc, predicate) => {
+  let found = false
+  try {
+    doc.descendants((node) => {
+      if (predicate(node)) {
+        found = true
+        throw new Error('STOP_TRAVERSAL')
+      }
+    })
+  } catch (e) {
+    if (e.message !== 'STOP_TRAVERSAL') throw e
+  }
+  return found
+}
+
+
+const hasPendingUploads = () => {
+  if (!editor.value) return false
+  
+  return findNode(editor.value.state.doc, (node) => {
+    return node.type.name === 'imageUpload'
+  })
+}
 defineExpose({
   getPendingBlobs,
   updateImageUrls,
-  getHTML
+  getHTML,
+  isEmpty,
+  hasPendingUploads
 })
 </script>

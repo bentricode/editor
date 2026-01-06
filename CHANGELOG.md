@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/bentricode/editor/compare/v1.2.0...v1.3.0) (2026-01-06)
+
+
+### Features
+
+* enhance command suggestions and localization; update icons and text handling ([459dce9](https://github.com/bentricode/editor/commit/459dce93d4c0e2062e79010e10fa6766754a3ca1))
+
 # [1.2.0](https://github.com/bentricode/editor/compare/v1.1.0...v1.2.0) (2026-01-05)
 
 

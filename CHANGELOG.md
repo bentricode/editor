@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/bentricode/editor/compare/v1.3.0...v1.4.0) (2026-01-06)
+
+
+### Features
+
+* add internationalization support for link and list components; update locale files ([40a6a0d](https://github.com/bentricode/editor/commit/40a6a0d40f232078ce997e42da664a72688e67ac))
+
 # [1.3.0](https://github.com/bentricode/editor/compare/v1.2.0...v1.3.0) (2026-01-06)
 
 

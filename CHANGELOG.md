@@ -1,3 +1,10 @@
+# [1.5.0](https://github.com/bentricode/editor/compare/v1.4.0...v1.5.0) (2026-01-06)
+
+
+### Features
+
+* update image upload component and localization; refactor icons and translations ([320e0bc](https://github.com/bentricode/editor/commit/320e0bcfe1cf65aeff4a86d8ee4fb8cfe2d27ad3))
+
 # [1.4.0](https://github.com/bentricode/editor/compare/v1.3.0...v1.4.0) (2026-01-06)
 
 

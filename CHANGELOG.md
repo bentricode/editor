@@ -1,3 +1,10 @@
+## [1.9.1](https://github.com/bentricode/editor/compare/v1.9.0...v1.9.1) (2026-01-13)
+
+
+### Bug Fixes
+
+* remove obsolete video files (video.gif and video.mp4) ([55cf93f](https://github.com/bentricode/editor/commit/55cf93f3e1cd188b58affa8bf540a0cfa8f0a8ca))
+
 # [1.9.0](https://github.com/bentricode/editor/compare/v1.8.0...v1.9.0) (2026-01-13)
 
 

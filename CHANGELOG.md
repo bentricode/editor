@@ -1,3 +1,10 @@
+# [1.8.0](https://github.com/bentricode/editor/compare/v1.7.0...v1.8.0) (2026-01-13)
+
+
+### Features
+
+* add demo video and update README layout ([da011f3](https://github.com/bentricode/editor/commit/da011f3da250d3052f21c58b2a961878d9c83841))
+
 # [1.7.0](https://github.com/bentricode/editor/compare/v1.6.0...v1.7.0) (2026-01-13)
 
 

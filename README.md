@@ -1,7 +1,7 @@
 # 🚀 Bentricode Editor
 
 <div align="center">
-  <img src="./video.gif" alt="Demo do Bentricode Editor" width="100%">
+  <video src="./video.mp4" controls="controls" muted="muted" style="max-width: 100%;"></video>
 </div>
 
 ## A experiência "Notion-like" para suas aplicações Vue.js

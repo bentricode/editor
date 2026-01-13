@@ -1,5 +1,9 @@
 # 🚀 Bentricode Editor
 
+<div align="center">
+  <img src="./video.gif" alt="Demo do Bentricode Editor" width="100%">
+</div>
+
 ## A experiência "Notion-like" para suas aplicações Vue.js
 
 O @bentricode/editor é uma solução de edição de texto construída sobre o ecossistema Tiptap. Projetado para oferecer uma experiência de escrita fluida e moderna, ele remove a complexidade de configurar extensões, menus flutuantes e gerenciamento de blocos, permitindo que você foque no que importa: o conteúdo da sua aplicação.

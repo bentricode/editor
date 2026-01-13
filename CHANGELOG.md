@@ -1,3 +1,10 @@
+# [1.9.0](https://github.com/bentricode/editor/compare/v1.8.0...v1.9.0) (2026-01-13)
+
+
+### Features
+
+* replace demo GIF with video and add video file ([f9fc388](https://github.com/bentricode/editor/commit/f9fc388938721086513445d8da790b44b219c54b))
+
 # [1.8.0](https://github.com/bentricode/editor/compare/v1.7.0...v1.8.0) (2026-01-13)
 
 

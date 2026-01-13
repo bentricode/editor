@@ -1,5 +1,14 @@
 <template>
-  <div class="tiptap-viewer read-only" v-if="editor">
+  <div
+  :data-editor-theme-base="props.palette"
+
+  ref="editor_ref" 
+  class="tiptap-viewer read-only"
+  :class="{ 
+    'dark-mode': props.theme === 'dark',
+  }"
+  
+   v-if="editor">
     <editor-content :editor="editor" />
   </div>
 </template>
@@ -10,7 +19,7 @@ import StarterKit from '@tiptap/starter-kit'
 import { Color, TextStyle } from '@tiptap/extension-text-style'
 import { ListItem } from '@tiptap/extension-list'
 import TextAlign from '@tiptap/extension-text-align'
-import Link from '@tiptap/extension-link'
+
 import { ResizableImage, ImageUploadBlock } from '@/assets/js/extensions/CustomImage.js'
 import { CodeBlockCustom } from '@/assets/js/extensions/CustomCodeBlock.js'
 import { watch } from 'vue'
@@ -19,6 +28,18 @@ const props = defineProps({
   content: {
     type: [String, Object],
     default: '',
+  },
+  options:{
+    type: Object,
+    default: () => ({}),
+  },
+    theme:{
+    type: String,
+    default: 'light', // light ou dark
+  },
+  palette:{
+    type: String,
+    default: 'slate', 
   }
 })
 
@@ -27,16 +48,19 @@ const editor = useEditor({
   editable: false, 
   
   content: props.content,
+
   
   extensions: [
     StarterKit.configure({
       codeBlock: false, 
+      link: {
+        openOnClick: true,
+        ...props.options.link} || {},
     }),
     Color.configure({ types: [TextStyle.name, ListItem.name] }),
     TextStyle.configure({ types: [ListItem.name] }),
     TextAlign.configure({ types: ['heading', 'paragraph', 'image'] }),
-    Link.configure({ openOnClick: true }), // Links funcionam no modo leitura
-    
+
     CodeBlockCustom,
     ResizableImage,
     ImageUploadBlock, 

@@ -221,6 +221,31 @@ Para alterar o idioma, basta utilizar a prop ```locale```. A propriedade é reat
 <Editor v-model="content" locale="en" />
 ```
 
+## Lembrando que os temas e options de link precisam ser redefinidos no visualizador
+
+- no caso do link se quiser ssh precisa ser definido por que o tiptap por padrão não aceita ssh 
+- o tema e paleta deve ser definido para manter consistencia
+
+```html
+<template>
+    <EditorViewer :content="artigo_conteudo" :options="options" 
+    :theme="theme" :palette="themePalette"
+    />
+</template>
+
+<script setup lang="ts">
+  import { EditorViewer } from '@bentricode/editor';
+  import { ref } from 'vue';
+  const editor_conteudo = ref('vem da api')
+  const themePalette = 'zinc';
+  const theme = 'dark';
+  const options = {
+      link: {
+          protocols: ['http', 'https', 'ssh'], // Protocolos permitidos
+      }
+  };
+</script>
+```
 
 ## 📚 API Reference
 

@@ -1,8 +1,6 @@
 # 🚀 Bentricode Editor
 
-<div align="center">
-  <video src="./video.mp4" controls="controls" muted="muted" style="max-width: 100%;"></video>
-</div>
+https://github.com/user-attachments/assets/c1a470c0-f8f9-4581-8499-71590d9c2e8d
 
 ## A experiência "Notion-like" para suas aplicações Vue.js
 

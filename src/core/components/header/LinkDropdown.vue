@@ -64,6 +64,8 @@ const href = ref('')
 const target = ref('_self')
 const inputRef = ref(null)
 const dropdownRef = ref(null)
+// força o uso de https ao salvar o link (no caso de o usuário não colocar nenhum protocolo)
+const forceHttps = ref(true)
 
 // Sincroniza estado inicial ao selecionar um link existente
 watch(() => props.editor.state.selection, () => {
@@ -71,9 +73,15 @@ watch(() => props.editor.state.selection, () => {
     const attrs = props.editor.getAttributes('link')
     href.value = attrs.href || ''
     target.value = attrs.target || '_self'
+
+    // Se já é um link existente e NÃO começa com http/https, 
+    // assumimos que foi intencional (modo ssh etc..)
+    const isStandardWeb = /^https?:\/\//i.test(href.value);
+    forceHttps.value = isStandardWeb || href.value === '';
   } else {
     href.value = ''
     target.value = '_self'
+    forceHttps.value = true
   }
 })
 
@@ -89,8 +97,11 @@ const saveLink = (closeFn) => {
   }
 
   let url = href.value
-  if (!/^https?:\/\//i.test(url) && !/^mailto:/i.test(url)) {
+  if (forceHttps.value){
+    const hasProtocol = /^[a-zA-Z0-9\+\.\-]+:\/\//.test(url) || /^mailto:/i.test(url);
+    if (!hasProtocol) {
       url = 'https://' + url
+    }
   }
 
   props.editor

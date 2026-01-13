@@ -146,6 +146,8 @@ const editor = useEditor({
     TextStyle.configure({ types: [ListItem.name] }),
     StarterKit.configure({
       dropcursor: false, // Desabilita o dropcursor nativo
+      link: props.options.link || {},
+      
 
     }),
     Commands.configure({

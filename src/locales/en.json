@@ -59,5 +59,10 @@
         "copy": "Copy text",
         "delete": "Delete",
         "cut": "Cut"
+    },
+    "code_block": {
+        "select_language": "Select language",
+        "copy": "Copy",
+        "copied": "Copied!"
     }
 }

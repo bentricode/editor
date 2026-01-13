@@ -1,3 +1,10 @@
+# [1.7.0](https://github.com/bentricode/editor/compare/v1.6.0...v1.7.0) (2026-01-13)
+
+
+### Features
+
+* update README and localization files, enhance link handling and code block functionality ([08ca7c7](https://github.com/bentricode/editor/commit/08ca7c7ef55ddff17a342426dd06962e376b30ef))
+
 # [1.6.0](https://github.com/bentricode/editor/compare/v1.5.0...v1.6.0) (2026-01-06)
 
 

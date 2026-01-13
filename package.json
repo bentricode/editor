@@ -1,6 +1,6 @@
 {
   "name": "@bentricode/editor",
-  "version": "1.6.0",
+  "version": "1.7.0",
   "private": false,
   "publishConfig": {
     "access": "public"
@@ -73,15 +73,15 @@
     "vue-tsc": "^3.1.0"
   },
   "keywords": [
-  "vue",
-  "vue3",
-  "tiptap",
-  "editor",
-  "wysiwyg",
-  "rich-text",
-  "notion-like",
-  "block-editor",
-  "drag-drop",
-  "slash-commands"
-]
+    "vue",
+    "vue3",
+    "tiptap",
+    "editor",
+    "wysiwyg",
+    "rich-text",
+    "notion-like",
+    "block-editor",
+    "drag-drop",
+    "slash-commands"
+  ]
 }

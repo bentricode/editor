@@ -1,3 +1,10 @@
+# [1.10.0](https://github.com/bentricode/editor/compare/v1.9.1...v1.10.0) (2026-01-13)
+
+
+### Features
+
+* enhance EditorViewer with theme and link options support ([7507ede](https://github.com/bentricode/editor/commit/7507ede51362a25538af6f7d1d5c20d53de91d86))
+
 ## [1.9.1](https://github.com/bentricode/editor/compare/v1.9.0...v1.9.1) (2026-01-13)
 
 

@@ -215,7 +215,6 @@ Atualmente, os idiomas suportados são:
 -    Inglês (```en```)
 
 Para alterar o idioma, basta utilizar a prop ```locale```. A propriedade é reativa, ou seja, se a sua aplicação mudar de idioma dinamicamente, o editor acompanhará a mudança instantaneamente.
-## Uso Básico
 
 ```html
 <Editor v-model="content" locale="en" />

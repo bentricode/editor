@@ -78,6 +78,10 @@ watch(() => props.content, (newValue) => {
     editor.value.commands.setContent(newValue, false) 
   }
 })
+defineExpose({
+  editor,
+})
+
 </script>
 
 <style lang="scss">

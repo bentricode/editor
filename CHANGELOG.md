@@ -1,3 +1,10 @@
+## [1.10.1](https://github.com/bentricode/editor/compare/v1.10.0...v1.10.1) (2026-03-04)
+
+
+### Bug Fixes
+
+* agora expões o editor pelo visualizador ([b1c6f15](https://github.com/bentricode/editor/commit/b1c6f15d9c44a7755f071fba36531e34d2952041))
+
 # [1.10.0](https://github.com/bentricode/editor/compare/v1.9.1...v1.10.0) (2026-01-13)
 
 

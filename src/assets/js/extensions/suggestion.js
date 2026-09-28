@@ -73,9 +73,24 @@ export default {
           editor.chain().focus().deleteRange(range).addImageUploadBlock().run()
         },
       },
+      {
+        title: t('header.table.name'),
+        searchTerms: ['tabela', 'table', 'grid', 'linhas', 'colunas'],
+        icon: icons.header.table,
+        command: ({ editor, range }) => {
+          editor.chain().focus().deleteRange(range).insertTable({ rows: 3, cols: 3, withHeaderRow: true }).run()
+        },
+      },
+      {
+        title: t('header.clear_formatting'),
+        searchTerms: ['limpar', 'formatacao', 'clear', 'remover', 'reset'],
+        icon: icons.header.clearFormatting,
+        command: ({ editor, range }) => {
+          editor.chain().focus().deleteRange(range).unsetAllMarks().clearNodes().run()
+        },
+      },
     ];
 
-    // LÓGICA DE FILTRO DOS ITENS
     return commandList.filter(item => {
       // Verifica se o título CONTÉM o texto
       const inTitle = item.title.toLowerCase().includes(textQuery);

@@ -42,6 +42,16 @@
           <component :is="icons.header.strikethrough" />
         </button>
 
+        <button v-if="item === 'clearFormatting'" @click="editor.chain().focus().unsetAllMarks().clearNodes().run()"
+          :disabled="!editor.can().chain().focus().unsetAllMarks().run()"
+          v-tippy="$t('header.clear_formatting')">
+          <component :is="icons.header.clearFormatting" />
+        </button>
+
+        <ColorDropdown v-if="item === 'color'" :editor="editor" />
+
+        <TableDropdown v-if="item === 'table'" :editor="editor" />
+
         <button v-if="item === 'code'" @click="editor.chain().focus().toggleCode().run()"
           :disabled="!editor.can().chain().focus().toggleCode().run()"
           :class="{ 'is-active': editor.isActive('code') }" v-tippy="$t('header.code')">
@@ -80,6 +90,8 @@ import HeadingDropdown from '@/core/components/header/HeadingDropdown.vue'
 import AlignDropdown from '@/core/components/header/AlignDropdown.vue'
 import ListDropdown from '@/core/components/header/ListDropdown.vue'
 import LinkDropdown from '@/core/components/header/LinkDropdown.vue'
+import ColorDropdown from '@/core/components/header/ColorDropdown.vue'
+import TableDropdown from '@/core/components/header/TableDropdown.vue'
 import { onUnmounted, ref, computed } from 'vue'
 import { svgs } from '@/assets/js/svgs.js'
 import { buildIcons } from '@/utils/svgFactory.js'
@@ -91,15 +103,14 @@ const props = defineProps({
     options: { type: Object, default: () => ({}) },
 })
 
-// Lista padrão de ferramentas, caso o usuário não passe nada
 const defaultToolbar = [
     'undo', 'redo', 'separator',
-    'text', 'bold', 'italic', 'strikethrough', 'separator',
-    'list', 'align', 'separator',
+    'text', 'bold', 'italic', 'strikethrough', 'clearFormatting', 'separator',
+    'color', 'separator',
+    'list', 'align', 'table', 'separator',
     'link', 'imageUpload', 'blockQuote', 'code','codeBlock'
 ]
 
-// Computed para garantir que sempre tenhamos um array válido
 const toolbarItems = computed(() => {
     if (props.options && props.options.toolbar && Array.isArray(props.options.toolbar.items)) {
         return props.options.toolbar.items

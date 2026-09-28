@@ -44,7 +44,29 @@
             "heading_6": "Heading 6"
         },
         "undo": "Undo",
-        "redo": "Redo"
+        "redo": "Redo",
+        "clear_formatting": "Clear formatting",
+        "color": {
+            "name": "Colors",
+            "text": "Text color",
+            "highlight": "Highlight color",
+            "reset": "Default / Remove color",
+            "custom": "Custom"
+        },
+        "table": {
+            "name": "Table",
+            "insert": "Insert table",
+            "add_row_before": "Insert row above",
+            "add_row_after": "Insert row below",
+            "delete_row": "Delete row",
+            "add_column_before": "Insert column before",
+            "add_column_after": "Insert column after",
+            "delete_column": "Delete column",
+            "toggle_header_row": "Toggle header row",
+            "merge_cells": "Merge cells",
+            "split_cell": "Split cell",
+            "delete_table": "Delete table"
+        }
     },
     "command_list": {
         "open": "Type '/' to open the command menu",

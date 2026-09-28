@@ -18,8 +18,8 @@
 }
 
 /* Bases de Cores (Inspirado e adaptado do Tabler) */
-
-[data-editor-theme-base="slate"] {
+[data-editor-theme-base="slate"],
+[data-bs-theme-base="slate"] {
   --gray-50: #f8fafc;
   --gray-100: #f1f5f9;
   --gray-200: #e2e8f0;
@@ -33,7 +33,8 @@
   --gray-950: #020617;
 }
 
-[data-editor-theme-base="gray"] {
+[data-editor-theme-base="gray"],
+[data-bs-theme-base="gray"] {
   --gray-50: #f9fafb;
   --gray-100: #f3f4f6;
   --gray-200: #e5e7eb;
@@ -47,7 +48,8 @@
   --gray-950: #030712;
 }
 
-[data-editor-theme-base="zinc"] {
+[data-editor-theme-base="zinc"],
+[data-bs-theme-base="zinc"] {
   --gray-50: #fafafa;
   --gray-100: #f4f4f5;
   --gray-200: #e4e4e7;
@@ -61,7 +63,8 @@
   --gray-950: #09090b;
 }
 
-[data-editor-theme-base="neutral"] {
+[data-editor-theme-base="neutral"],
+[data-bs-theme-base="neutral"] {
   --gray-50: #fafafa;
   --gray-100: #f5f5f5;
   --gray-200: #e5e5e5;
@@ -75,7 +78,8 @@
   --gray-950: #0a0a0a;
 }
 
-[data-editor-theme-base="stone"] {
+[data-editor-theme-base="stone"],
+[data-bs-theme-base="stone"] {
   --gray-50: #fafaf9;
   --gray-100: #f5f5f4;
   --gray-200: #e7e5e4;
@@ -88,7 +92,9 @@
   --gray-900: #1c1917;
   --gray-950: #0c0a09;
 }
-[data-editor-theme-base="pink"] {
+
+[data-editor-theme-base="pink"],
+[data-bs-theme-base="pink"] {
   --gray-50: #fdf2f8;
   --gray-100: #fce7f3;
   --gray-200: #fbcfe8;
@@ -103,27 +109,16 @@
 }
 
 [data-editor-theme-base="elegant"] {
-  /* Textos (Do branco puro ao cinza) */
-  --gray-50:  #ffffff; 
+  --gray-50: #ffffff; 
   --gray-100: #fafafa;
   --gray-200: #e5e5e5;
   --gray-300: #d4d4d4;
   --gray-400: #a3a3a3;
-  
-  /* Cores médias (Textos secundários e ícones) */
   --gray-500: #737373;
   --gray-600: #525252;
-  
-  /* Bordas e Separadores (Precisam ser sutis contra o preto) */
   --gray-700: #333333; 
-  
-  /* Elementos de Interface (Hovers, Cards, Menus Flutuantes) */
   --gray-800: #262626; 
-  
-  /* Fundos Secundários (Headers, Sidebars) */
   --gray-900: #0a0a0a; 
-  
-  /* O FUNDO PRINCIPAL: PRETO PURO */
   --gray-950: #000000;
 }
 
@@ -132,61 +127,75 @@
    ========================================================================== */
 
 /* --- TEMA LIGHT (Padrão) --- */
-:root {
-  /* Backgrounds */
-  --bg-primary: #ffffff;
-  --bg-secondary: var(--gray-50); 
-  --bg-hover: var(--gray-100);
-  --bg-modal: #ffffff;
-  --bg-code: var(--gray-900); /* Code block escuro para contraste */
+:root,
+:root[data-bs-theme="light"],
+[data-bs-theme="light"],
+[data-theme="light"] {
+  --bg-primary: var(--tblr-bg-surface, #ffffff);
+  --bg-secondary: var(--tblr-bg-surface-secondary, var(--gray-50));
+  --bg-hover: var(--tblr-bg-surface-secondary, var(--gray-100));
+  --bg-modal: var(--tblr-bg-surface, #ffffff);
+  --bg-code: var(--gray-900);
 
-  /* Borders */
-  --border-light: var(--gray-200);
-  --border-focus: #958DF1;
+  --border-light: var(--tblr-border-color, var(--gray-200));
+  --border-focus: var(--tblr-primary, #958df1);
+  --border-editor: var(--tblr-border-color, var(--gray-300));
 
-  /* box-shadow */
-  --shadow-editor: var(--gray-200)
+  --shadow-editor: var(--gray-200);
 
-  /* Text */
-  --text-primary: var(--gray-900);
-  --text-secondary: var(--gray-500);
-  --text-placeholder: var(--gray-400);
+  --text-primary: var(--tblr-body-color, var(--gray-900));
+  --text-secondary: var(--tblr-secondary-color, var(--tblr-secondary, var(--gray-500)));
+  --text-placeholder: var(--tblr-tertiary-color, var(--tblr-muted, var(--gray-400)));
   --text-inverse: #ffffff;
 
-  /* Shadows */
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   --shadow-float: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
 
-  /* Brand Colors */
-  --color-brand: #9e1414;
-  --color-brand-light: #e0e7ff;
-  --color-success: #00dc82;
-  --color-danger: #ef4444;
+  --color-brand: var(--tblr-primary, #9e1414);
+  --color-brand-light: var(--tblr-primary-lt, #e0e7ff);
+  --color-success: var(--tblr-form-valid-color, var(--tblr-success, #00dc82));
+  --color-danger: var(--tblr-danger, #ef4444);
 }
 
-/* --- TEMA DARK (Ativado via .dark-mode ou data-theme="dark") --- */
-[data-theme="dark"], .dark-mode {
-  
-  /* Backgrounds: usa os tons mais escuros da paleta escolhida */
-  --bg-primary: var(--gray-900); 
-  --bg-secondary: var(--gray-950);
-  --bg-hover: var(--gray-800);
-  --bg-modal: var(--gray-950);
-  
-  /* Borders */
-  --border-light: var(--gray-800);
-  --border-editor: var(--gray-700);
-  
-  /* Text */
-  --text-primary: var(--gray-100);
-  --text-secondary: var(--gray-400);
-  --text-placeholder: var(--gray-600);
+:root[data-bs-theme="dark"],
+:root[data-theme="dark"],
+[data-bs-theme="dark"],
+[data-theme="dark"],
+.dark-mode {
+  --bg-primary: var(--tblr-bg-surface, var(--gray-900));
+  --bg-secondary: var(--tblr-bg-surface-secondary, var(--gray-950));
+  --bg-hover: var(--tblr-bg-surface-secondary, var(--gray-800));
+  --bg-modal: var(--tblr-bg-surface, var(--gray-950));
+
+  --border-light: var(--tblr-border-color, var(--gray-800));
+  --border-editor: var(--tblr-border-color, var(--gray-700));
+
+  --text-primary: var(--tblr-body-color, var(--gray-100));
+  --text-secondary: var(--tblr-secondary-color, var(--tblr-secondary, var(--gray-400)));
+  --text-placeholder: var(--tblr-tertiary-color, var(--tblr-muted, var(--gray-600)));
   --text-inverse: var(--gray-950);
 
-  /* Brand Adjustments */
-  --color-brand: #a79ff5; 
-  --color-brand-light: rgba(149, 141, 241, 0.15);
-  
-  /* Shadows */
+  --color-brand: var(--tblr-primary, #a79ff5);
+  --color-brand-light: var(--tblr-primary-lt, rgba(149, 141, 241, 0.15));
+
   --shadow-float: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+}
+
+[data-bs-theme="dark"] .v-bentri-editor,
+[data-bs-theme="dark"] .tiptap-viewer {
+  --bg-primary: var(--tblr-bg-surface, var(--gray-900));
+  --bg-secondary: var(--tblr-bg-surface-secondary, var(--gray-950));
+  --bg-hover: var(--tblr-bg-surface-secondary, var(--gray-800));
+  --bg-modal: var(--tblr-bg-surface, var(--gray-950));
+
+  --border-light: var(--tblr-border-color, var(--gray-800));
+  --border-editor: var(--tblr-border-color, var(--gray-700));
+
+  --text-primary: var(--tblr-body-color, var(--gray-100));
+  --text-secondary: var(--tblr-secondary-color, var(--tblr-secondary, var(--gray-400)));
+  --text-placeholder: var(--tblr-tertiary-color, var(--tblr-muted, var(--gray-600)));
+  --text-inverse: var(--gray-950);
+
+  --color-brand: var(--tblr-primary, #a79ff5);
+  --color-brand-light: var(--tblr-primary-lt, rgba(149, 141, 241, 0.15));
 }

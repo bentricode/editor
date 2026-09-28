@@ -14,8 +14,10 @@ import 'tippy.js/animations/scale.css';
  * - Importar estilos globais
  * - Instalar i18n
  */
+import type { BentricodeEditorPluginOptions } from '@/types';
+
 export const BentricodeEditorPlugin = {
-  install: (app: App) => {
+  install: (app: App, _options?: BentricodeEditorPluginOptions) => {
 
     // Configura i18n
     app.use(i18n);

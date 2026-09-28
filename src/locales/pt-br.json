@@ -44,7 +44,29 @@
             "heading_6": "Título 6"
         },
         "undo": "Desfazer",
-        "redo": "Refazer"
+        "redo": "Refazer",
+        "clear_formatting": "Limpar formatação",
+        "color": {
+            "name": "Cores",
+            "text": "Cor do texto",
+            "highlight": "Cor de destaque / fundo",
+            "reset": "Padrão / Remover cor",
+            "custom": "Personalizada"
+        },
+        "table": {
+            "name": "Tabela",
+            "insert": "Inserir tabela",
+            "add_row_before": "Inserir linha acima",
+            "add_row_after": "Inserir linha abaixo",
+            "delete_row": "Excluir linha",
+            "add_column_before": "Inserir coluna à esquerda",
+            "add_column_after": "Inserir coluna à direita",
+            "delete_column": "Excluir coluna",
+            "toggle_header_row": "Alternar linha de cabeçalho",
+            "merge_cells": "Mesclar células",
+            "split_cell": "Dividir célula",
+            "delete_table": "Excluir tabela"
+        }
     },
     "command_list": {
         "open": "Digite '/' para abrir o menu de comandos",

@@ -2,8 +2,8 @@
   <div 
   :data-editor-theme-base="props.palette"
   @dragover="handleDragOver" @drop="handleDrop" @dragleave="handleDragLeave"
-  ref="editor_ref" v-if="editor" class="v-bentri-editor " :class="{ 'v-bentri-editor-full-screen': header_ref?.is_full_screen,
-    'dark-mode': props.theme === 'dark',
+  ref="editor_ref" v-if="editor" class="v-bentri-editor" :class="{ 'v-bentri-editor-full-screen': header_ref?.is_full_screen,
+    'dark-mode': isDark,
   }">
     <Header ref="header_ref" :editor="editor"
     :options="props.options"
@@ -46,6 +46,8 @@
 
 import { ListItem } from '@tiptap/extension-list'
 import { Color, TextStyle } from '@tiptap/extension-text-style'
+import { Highlight } from '@tiptap/extension-highlight'
+import { Table, TableRow, TableCell, TableHeader } from '@tiptap/extension-table'
 import StarterKit from '@tiptap/starter-kit'
 import { useEditor, EditorContent } from '@tiptap/vue-3'
 import Placeholder from '@tiptap/extension-placeholder'
@@ -54,7 +56,7 @@ import { NodeSelection } from '@tiptap/pm/state'
 
 import NotionSidebar from './components/NotionSidebar.vue'
 
-import { reactive, ref, watch, provide } from 'vue'
+import { reactive, ref, watch, provide, computed, onMounted, onUnmounted } from 'vue'
 
 import { ResizableImage, ImageUploadBlock } from '@/assets/js/extensions/CustomImage.js'
 import { CodeBlockCustom } from '@/assets/js/extensions/CustomCodeBlock.js'
@@ -65,6 +67,7 @@ import Commands from '@/assets/js/extensions/Commands.js'
 import suggestion from '@/assets/js/extensions/suggestion.js'
 import FloatMenu from './components/FloatMenu.vue'
 import { useI18n } from 'vue-i18n' 
+
 const { t, locale: i18nLocale } = useI18n()
 
 const editor_ref = ref(null)
@@ -82,18 +85,52 @@ const props = defineProps({
   },
   locale:{
     type: String,
-    default: 'pt-br', // en, pt-br
+    default: 'pt-br',
   },
   theme:{
     type: String,
-    default: 'light', // light ou dark
+    default: 'auto',
   },
   palette:{
     type: String,
     default: 'slate', 
   }
 })
+
 const emit = defineEmits(['update:modelValue'])
+
+const isSystemDark = ref(false)
+
+const updateSystemTheme = () => {
+  if (typeof document !== 'undefined') {
+    isSystemDark.value =
+      document.documentElement.getAttribute('data-bs-theme') === 'dark' ||
+      document.body.getAttribute('data-bs-theme') === 'dark'
+  }
+}
+
+let themeObserver = null
+
+onMounted(() => {
+  updateSystemTheme()
+  if (typeof MutationObserver !== 'undefined' && typeof document !== 'undefined') {
+    themeObserver = new MutationObserver(updateSystemTheme)
+    themeObserver.observe(document.documentElement, { attributes: true, attributeFilter: ['data-bs-theme'] })
+    themeObserver.observe(document.body, { attributes: true, attributeFilter: ['data-bs-theme'] })
+  }
+})
+
+onUnmounted(() => {
+  if (themeObserver) {
+    themeObserver.disconnect()
+  }
+})
+
+const isDark = computed(() => {
+  if (props.theme === 'dark') return true
+  if (props.theme === 'light') return false
+  return isSystemDark.value
+})
 const showImageModal = ref(false)
 // --- ESTADO REATIVO DO DRAG ---
 const dragState = reactive({
@@ -144,11 +181,16 @@ const editor = useEditor({
   extensions: [
     Color.configure({ types: [TextStyle.name, ListItem.name] }),
     TextStyle.configure({ types: [ListItem.name] }),
+    Highlight.configure({ multicolor: true }),
+    Table.configure({
+      resizable: true,
+    }),
+    TableRow,
+    TableHeader,
+    TableCell,
     StarterKit.configure({
-      dropcursor: false, // Desabilita o dropcursor nativo
+      dropcursor: false,
       link: props.options.link || {},
-      
-
     }),
     Commands.configure({
       suggestion,

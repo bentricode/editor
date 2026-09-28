@@ -1,3 +1,21 @@
+# Changelog
+
+# [1.11.0](https://github.com/bentricode/editor/compare/v1.10.1...v1.11.0) (2026-09-28)
+
+
+### Bug Fixes
+
+* adicionando oidc do npm para sair da validação de token padrão ([24b1395](https://github.com/bentricode/editor/commit/24b1395c1cd8130c1d014214464eaaeaa8cad370))
+* atualizando package-lock.json ([39cfe89](https://github.com/bentricode/editor/commit/39cfe898414303ffa532f22e4af9eb7a817b1e4f))
+* movendo algumas dependencias para devdependencies ([1b4d7ad](https://github.com/bentricode/editor/commit/1b4d7add220ff0919ff657688fbf30a05adfa73c))
+* mudando versões para compatíveis ([2f6cde9](https://github.com/bentricode/editor/commit/2f6cde994cc4fcfc301f0d1fcae6e07402a0ed21))
+* removendo devdependencies desnecessária ([fd0dbb9](https://github.com/bentricode/editor/commit/fd0dbb9117201fdbcb7771023dcbf71af91b73fb))
+
+
+### Features
+
+* add table, color picker, clear formatting and full typescript support ([c66dd5b](https://github.com/bentricode/editor/commit/c66dd5b1d517c11a4b2ea2a6ac12c6ad95c6e5df))
+
 ## [1.10.1](https://github.com/bentricode/editor/compare/v1.10.0...v1.10.1) (2026-03-04)
 
 
